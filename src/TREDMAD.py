@@ -18,9 +18,9 @@ window_size_in_batches = 5
 windows = []
 
 
-# TRDPMAD is ready for multiprocessor (python MP) but for this demonstration file
+# TREDMAD is ready for multiprocessor (python MP) but for this demonstration file
 # is run only in single processor mode. 
-def TRDPMAD(mppack):
+def TREDMAD(mppack):
     # Get the argument as an MP job
     windows = mppack[0]
     batch_size = mppack[1]
@@ -109,7 +109,7 @@ def TRDPMAD(mppack):
 
     # Write the dataframes info to .csv - open it with pandas and get graphing
     ds = data_set[0] + "." + data_set[1]
-    name = "data/test_output/" + ds + "_alg-" + str(G) +  "_bs-" + str(batch_size) \
+    name = "../data/test_output/" + ds + "_alg-" + str(G) +  "_bs-" + str(batch_size) \
                 + "_wsib-" + str(window_size_in_batches) + ".csv"
     data_df.set_index('x', inplace=True)
     calc_df.set_index('x', inplace=True)
@@ -118,7 +118,7 @@ def TRDPMAD(mppack):
 
 # find the datasets in test - recommend doing one at a time using any of 
 # [ds00,  ds02,  ds04, ds06, ds01, ds03, ds05, ds07] for file match
-test_data_file = "data/test/ds00.csv"
+test_data_file = "../data/test/ds00.csv"
 test_data_names = [["ds00", "test"]]
 data = [pd.read_csv(test_data_file)]
 
@@ -135,4 +135,4 @@ for d, df in enumerate(data):
     windows.append([win, batch_size, window_size_in_batches, test_data_names[d], G])
 
 for w in windows:
-    TRDPMAD(w)
+    TREDMAD(w)

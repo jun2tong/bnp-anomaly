@@ -18,7 +18,8 @@ import sys
 import scipy.io
 from . import ElapsedTimeLogger
 
-from sklearn.externals import joblib
+#from sklearn.externals import joblib
+import joblib
 from bnpy.ioutil import ModelWriter
 from bnpy.util import isEvenlyDivisibleFloat
 
